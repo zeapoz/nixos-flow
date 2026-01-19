@@ -1,0 +1,190 @@
+// Zed settings
+//
+// For information on how to configure Zed, see the Zed
+// documentation: https://zed.dev/docs/configuring-zed
+//
+// To see all of Zed's default settings without changing your
+// custom settings, run `zed: open default settings` from the
+// command palette (cmd-shift-p / ctrl-shift-p)
+{
+  "autoscroll_on_clicks": true,
+  "scroll_sensitivity": 1.0,
+  "vertical_scroll_margin": 15.0,
+  "scroll_beyond_last_line": "vertical_scroll_margin",
+  "file_finder": {
+    "modal_max_width": "small",
+  },
+  "indent_guides": {
+    "active_line_width": 2,
+    "line_width": 1,
+    "background_coloring": "disabled",
+    "coloring": "fixed",
+  },
+  "lsp_document_colors": "inlay",
+  "git": {
+    "inline_blame": {
+      "show_commit_summary": false,
+    },
+  },
+  "git_panel": {
+    "tree_view": true,
+  },
+  "show_wrap_guides": false,
+  "preferred_line_length": 100,
+  "soft_wrap": "editor_width",
+  "colorize_brackets": true,
+  "diagnostics": {
+    "inline": {
+      "padding": 4,
+      "enabled": true,
+    },
+  },
+  "zoomed_padding": true,
+  "preview_tabs": {
+    "enable_keep_preview_on_code_navigation": true,
+    "enable_preview_from_file_finder": true,
+  },
+  "title_bar": {
+    "show_menus": false,
+    "show_branch_icon": true,
+  },
+  "buffer_font_family": "Maple Mono NF",
+  "inlay_hints": {
+    "show_background": true,
+    "enabled": true,
+  },
+  "show_whitespaces": "selection",
+  "toolbar": {
+    "breadcrumbs": true,
+    "code_actions": true,
+  },
+  "minimap": {
+    "thumb_border": "left_open",
+    "show": "never",
+  },
+  "relative_line_numbers": "enabled",
+  "show_signature_help_after_edits": true,
+  "auto_signature_help": true,
+  "sticky_scroll": {
+    "enabled": true,
+  },
+  "active_pane_modifiers": {
+    "border_size": 0.0,
+  },
+  "tabs": {
+    "show_diagnostics": "all",
+    "close_position": "left",
+    "file_icons": true,
+    "git_status": true,
+  },
+  "tab_bar": {
+    "show": false,
+  },
+  "features": {
+    "edit_prediction_provider": "supermaven",
+  },
+  "terminal": {
+    "toolbar": {
+      "breadcrumbs": false,
+    },
+    "cursor_shape": "bar",
+    "font_size": 13.5,
+    "dock": "right",
+  },
+  "status_bar": {
+    "cursor_position_button": true,
+    "active_language_button": true,
+  },
+  "project_panel": {
+    "show_diagnostics": "all",
+    "indent_size": 15.0,
+    "entry_spacing": "standard",
+    "dock": "left",
+    "button": true,
+  },
+  "agent": {
+    "use_modifier_to_send": true,
+    "play_sound_when_agent_done": true,
+    "model_parameters": [],
+    "enable_feedback": false,
+  },
+  "autosave": {
+    "after_delay": {
+      "milliseconds": 1000,
+    },
+  },
+  "ui_font_weight": 400.0,
+  "buffer_line_height": "standard",
+  "buffer_font_weight": 400.0,
+  "icon_theme": "Material Icon Theme",
+  "telemetry": {
+    "diagnostics": false,
+    "metrics": false,
+  },
+  "vim_mode": true,
+  "ui_font_size": 16.5,
+  "buffer_font_size": 13.5,
+  "theme": {
+    "mode": "dark",
+    "light": "Amp Light",
+    "dark": "Amp Dark",
+  },
+  "languages": {
+    "JSON": {
+      "tab_size": 2,
+    },
+    "Zig": {
+      "format_on_save": "on",
+      "language_servers": ["zls", "..."],
+      "code_actions_on_format": {
+        "source.organizeImports": true,
+      },
+    },
+    "Nix": {
+      "format_on_save": "on",
+      "language_servers": ["nil"],
+      "formatter": {
+        "external": {
+          "command": "alejandra",
+        },
+      },
+    },
+    "Shell Script": {
+      "format_on_save": "on",
+      "formatter": {
+        "external": {
+          "command": "shfmt",
+          "arguments": ["-i", "2", "-ci", "-bn"],
+        },
+      },
+    },
+  },
+  "theme_overrides": {
+    "Kanagawa Wave": {
+      "hint": "#727169",
+      "syntax": {
+        "function.special": {
+          "color": "#e46876",
+        },
+        "attribute": {
+          "color": "#e46876",
+        },
+        "variable.special": {
+          "color": "#e46876",
+        },
+        "property": {
+          "color": "#e6c384",
+        },
+        "type.builtin": {
+          "color": "#7fb4ca",
+        },
+        "lifetime": {
+          "color": "#e46876",
+        },
+        "hint": {
+          "color": "#727169",
+        },
+      },
+    },
+  },
+}

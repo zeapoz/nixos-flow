@@ -1,0 +1,141 @@
+// Zed keymap
+//
+// For information on binding keys, see the Zed
+// documentation: https://zed.dev/docs/key-bindings
+//
+// To see the default key bindings run `zed: open default keymap`
+// from the command palette.
+[
+  // ===========================================================================
+  // Prompt
+  // ===========================================================================
+  {
+    "bindings": {
+      "ctrl-j": "vim::MenuSelectNext",
+      "ctrl-k": "vim::MenuSelectPrevious",
+    },
+  },
+  {
+    "context": "(VimControl && !menu) || (!Editor && !Terminal)",
+    "bindings": {
+      // ===========================================================================
+      // Editor
+      // ===========================================================================
+      "space f": "file_finder::Toggle",
+      "space .": "file_finder::Toggle",
+      "space ,": "tab_switcher::Toggle",
+      "space /": "pane::DeploySearch",
+      "space e": "vim::ToggleProjectPanelFocus",
+      "space s": "outline::Toggle",
+      "space S": "project_symbols::Toggle",
+      "space x": "diagnostics::Deploy",
+      "space X": "diagnostics::DeployCurrentFile",
+      "space a": "agent::ToggleFocus",
+      "space t": "terminal_panel::ToggleFocus",
+      "space T": "workspace::NewTerminal",
+      "space ;": "command_palette::Toggle",
+      "space g g": "git_panel::ToggleFocus",
+      "space g d": "git::Diff",
+      "space n": "workspace::NewFile",
+      "space p": "projects::OpenRecent",
+      "space o": "task::Spawn",
+      "space k": "zed::OpenKeymapFile",
+      // ===========================================================================
+      // Toggle Options
+      // ===========================================================================
+      "space u t": "editor::ToggleTabBar",
+      "space u m": "editor::ToggleMinimap",
+      "space u l": "editor::ToggleRelativeLineNumbers",
+      "space u i": "editor::ToggleInlayHints",
+      "space u L": "editor::ToggleLineNumbers",
+      "space u d": "editor::ToggleInlineDiagnostics",
+      "space u D": "editor::ToggleDiagnostics",
+      "space u w": "editor::ToggleSoftWrap",
+      "ctrl-j": "workspace::ToggleLeftDock",
+      "ctrl-k": "workspace::ToggleRightDock",
+      // ===========================================================================
+      // Coding
+      // ===========================================================================
+      "space space": "editor::SelectEnclosingSymbol",
+      "space r": "editor::Rename",
+      "] h": "editor::GoToHunk",
+      "[ h": "editor::GoToPreviousHunk",
+      "] d": "editor::GoToDiagnostic",
+      "[ d": "editor::GoToPreviousDiagnostic",
+      "] e": [
+        "editor::GoToDiagnostic",
+        {
+          "severity": {
+            "min": "hint",
+            "max": "error",
+          },
+        },
+      ],
+      "[ e": [
+        "editor::GoToPreviousDiagnostic",
+        {
+          "severity": {
+            "min": "hint",
+            "max": "error",
+          },
+        },
+      ],
+      // ===========================================================================
+      // Panes
+      // ===========================================================================
+      "space w h": "workspace::ActivatePaneLeft",
+      "space w H": "workspace::MovePaneLeft",
+      "space w l": "workspace::ActivatePaneRight",
+      "space w L": "workspace::MovePaneRight",
+      "space w j": "workspace::ActivatePaneDown",
+      "space w J": "workspace::MovePaneDown",
+      "space w k": "workspace::ActivatePaneUp",
+      "space w K": "workspace::MovePaneUp",
+      "space w v": "pane::SplitVertical",
+      "space w s": "pane::SplitHorizontal",
+      "space w q": "pane::CloseActiveItem",
+      "space w o": "pane::CloseOtherItems",
+      "space w a": "pane::CloseAllItems",
+    },
+  },
+  // ===========================================================================
+  // Project Panel
+  // ===========================================================================
+  {
+    "context": "ProjectPanel && not_editing",
+    "bindings": {
+      "a": "project_panel::NewFile",
+      "A": "project_panel::NewDirectory",
+      "d": "project_panel::Delete",
+      "c": "project_panel::Copy",
+      "x": "project_panel::Cut",
+      "p": "project_panel::Paste",
+      "r": "project_panel::Rename",
+      "v": "project_panel::OpenSplitVertical",
+      "s": "project_panel::OpenSplitHorizontal",
+    },
+  },
+  // ===========================================================================
+  // Terminal
+  // ===========================================================================
+  {
+    "context": "Terminal",
+    "bindings": {
+      "ctrl-w h": "workspace::ActivatePaneLeft",
+      "ctrl-w l": "workspace::ActivatePaneRight",
+      "ctrl-w j": "workspace::ActivatePaneDown",
+      "ctrl-w k": "workspace::ActivatePaneUp",
+      "ctrl-w q": "pane::CloseActiveItem",
+      "ctrl-k": "terminal_panel::Toggle",
+    },
+  },
+  /// ==========================================================================
+  // Completion
+  // ===========================================================================
+  {
+    "context": "Editor && edit_prediction_conflict",
+    "bindings": {
+      "tab": "editor::AcceptEditPrediction",
+    },
+  },
+]

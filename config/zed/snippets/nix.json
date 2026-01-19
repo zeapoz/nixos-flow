@@ -1,0 +1,22 @@
+{
+  "NixOS Manager Module": {
+    "prefix": "nixos",
+    "body": ["flake.modules.nixos.${1:name} = {${2}};"],
+    "description": "Shorthand for defining NixOS modules",
+  },
+  "Home Manager Module": {
+    "prefix": "home",
+    "body": ["flake.modules.homeManager.${1:name} = {${2}};"],
+    "description": "Shorthand for defining Home Manager modules",
+  },
+  "System Packages": {
+    "prefix": "syspkgs",
+    "body": ["environment.systemPackages = with pkgs; [", "  ${1}", "];"],
+    "description": "Creates a new block for declaring system packages",
+  },
+  "User Packages": {
+    "prefix": "homepkgs",
+    "body": ["home.packages = with pkgs; [", "  ${1}", "];"],
+    "description": "Creates a new block for declaring system packages",
+  },
+}
