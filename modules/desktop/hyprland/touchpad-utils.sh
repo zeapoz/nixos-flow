@@ -54,7 +54,7 @@ function main() {
       get
       ;;
     *)
-      echo "Usage: $0 [--toggle|--update|--get]"
+      echo "Usage: ${0##*/} [--toggle|--update|--get]"
       ;;
   esac
 }

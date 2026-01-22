@@ -116,7 +116,11 @@
   "ui_font_weight": 400.0,
   "buffer_line_height": "standard",
   "buffer_font_weight": 400.0,
-  "icon_theme": "Material Icon Theme",
+  "icon_theme": {
+    "mode": "dark",
+    "light": "Material Icon Theme",
+    "dark": "Material Icon Theme"
+  },
   "telemetry": {
     "diagnostics": false,
     "metrics": false,
