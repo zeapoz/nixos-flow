@@ -1,16 +1,38 @@
 {
-  flake.modules.homeManager.desktop = {pkgs, ...}: {
+  flake.modules.homeManager.desktop = {
+    config,
+    pkgs,
+    ...
+  }: {
     home.packages = with pkgs; [
-      nwg-look
-      bibata-cursors
-      orchis-theme
-      papirus-icon-theme
+      nwg-look # For theme previews.
     ];
 
-    # Fix for some applications not picking up set xcursor, e.g. Steam.
-    home.file.".local/share/icons/default" = {
-      source = "${pkgs.bibata-cursors}/share/icons/Bibata-Original-Classic";
-      recursive = true;
+    gtk = {
+      enable = true;
+      colorScheme = "dark";
+      iconTheme = {
+        package = pkgs.papirus-icon-theme;
+        name = "Papirus-Dark";
+      };
+      theme = {
+        package = pkgs.orchis-theme;
+        name = "Orchis-Purple-Dark";
+      };
+    };
+
+    home.pointerCursor = {
+      enable = true;
+      package = pkgs.bibata-cursors;
+      name = "Bibata-Original-Classic";
+      size = 24;
+
+      gtk.enable = true;
+      hyprcursor.enable = true;
+      x11 = {
+        enable = true;
+        defaultCursor = config.home.pointerCursor.name;
+      };
     };
   };
 }

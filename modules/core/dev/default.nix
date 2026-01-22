@@ -1,7 +1,6 @@
 {
   flake.modules.nixos.core = {pkgs, ...}: {
     environment.systemPackages = with pkgs; [
-      gcc
       # Nix.
       nil
       alejandra
