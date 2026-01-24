@@ -1,8 +1,41 @@
-{lib, ...}: {
-  options.meta.username = lib.mkOption {
-    type = lib.types.str;
-    description = "The name of the user";
-    default = "jonathan";
+{
+  inputs,
+  lib,
+  ...
+}: {
+  options.meta = {
+    username = lib.mkOption {
+      type = lib.types.str;
+      description = "The name of the user";
+      default = "jonathan";
+    };
+
+    lib = lib.mkOption {
+      type = lib.types.lazyAttrsOf lib.types.unspecified;
+      default = {};
+    };
+  };
+
+  config.meta.lib.mkSystem = {
+    name,
+    stateVersion,
+    extraModules,
+  }: {
+    ${name} = inputs.nixpkgs.lib.nixosSystem {
+      modules =
+        [
+          inputs.home-manager.nixosModules.home-manager
+
+          inputs.self.modules.nixos.core
+          inputs.self.modules.nixos.desktop
+
+          {
+            networking.hostName = name;
+            system.stateVersion = stateVersion;
+          }
+        ]
+        ++ extraModules;
+    };
   };
 
   config.flake.modules.homeManager.core = {config, ...}: {
