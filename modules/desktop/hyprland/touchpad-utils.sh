@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 #
-#
+# Utilities for controlling the touchpad, including toggling it on and off.
 
 DEVICE_NAME="asustek-computer-inc.-gz302ea-keyboard-touchpad"
 
@@ -34,6 +34,7 @@ function get() {
   fi
 
   notify-send -u low -i "$icon" -e -a "Touchpad" "Touchpad" "The touchpad is currently $state"
+  printf "%s\n" "$state"
 }
 
 # Sets the touchpad state based on the status file.
@@ -44,17 +45,17 @@ function update() {
 
 function main() {
   case "$1" in
-    --toggle)
+    toggle)
       toggle
       ;;
-    --update)
+    update)
       update
       ;;
-    --get)
+    get)
       get
       ;;
     *)
-      echo "Usage: ${0##*/} [--toggle|--update|--get]"
+      printf "Usage: %s [toggle|update|get]\n" "${0##*/}" >&2
       ;;
   esac
 }
