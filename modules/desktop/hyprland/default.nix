@@ -1,8 +1,4 @@
-{
-  inputs,
-  config,
-  ...
-}: {
+{config, ...}: {
   flake.modules.nixos.desktop = {pkgs, ...}: let
     touchpad-utils = pkgs.writeShellApplication {
       name = "touchpad-utils";
@@ -20,7 +16,6 @@
       touchpad-utils
       playerctl
       wl-clipboard
-      inputs.caelestia-shell.packages.${pkgs.stdenv.hostPlatform.system}.default
     ];
 
     services.greetd = {
