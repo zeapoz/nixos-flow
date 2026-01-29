@@ -34,18 +34,10 @@
   "general": {
     "logo": "",
     "apps": {
-      "terminal": [
-        "ghostty", "-e"
-      ],
-      "audio": [
-        "pavucontrol"
-      ],
-      "playback": [
-        "mpv"
-      ],
-      "explorer": [
-        "nautilus"
-      ]
+      "terminal": ["ghostty", "-e"],
+      "audio": ["pavucontrol"],
+      "playback": ["mpv"],
+      "explorer": ["nautilus"]
     },
     "idle": {
       "lockBeforeSleep": true,
@@ -61,10 +53,7 @@
           "timeout": 600
         },
         {
-          "idleAction": [
-            "systemctl",
-            "suspend-then-hibernate"
-          ],
+          "idleAction": ["systemctl", "suspend-then-hibernate"],
           "timeout": 1200
         }
       ]
@@ -245,7 +234,7 @@
     "actionPrefix": ">",
     "enableDangerousActions": false,
     "dragThreshold": 50,
-    "vimKeybinds": false,
+    "vimKeybinds": true,
     "hiddenApps": [],
     "useFuzzy": {
       "apps": false,
@@ -262,10 +251,7 @@
     },
     "actions": [
       {
-        "command": [
-          "autocomplete",
-          "calc"
-        ],
+        "command": ["autocomplete", "calc"],
         "dangerous": false,
         "description": "Do simple math equations (powered by Qalc)",
         "enabled": true,
@@ -273,10 +259,7 @@
         "name": "Calculator"
       },
       {
-        "command": [
-          "autocomplete",
-          "scheme"
-        ],
+        "command": ["autocomplete", "scheme"],
         "dangerous": false,
         "description": "Change the current colour scheme",
         "enabled": true,
@@ -284,10 +267,7 @@
         "name": "Scheme"
       },
       {
-        "command": [
-          "autocomplete",
-          "wallpaper"
-        ],
+        "command": ["autocomplete", "wallpaper"],
         "dangerous": false,
         "description": "Change the current wallpaper",
         "enabled": true,
@@ -295,10 +275,7 @@
         "name": "Wallpaper"
       },
       {
-        "command": [
-          "autocomplete",
-          "variant"
-        ],
+        "command": ["autocomplete", "variant"],
         "dangerous": false,
         "description": "Change the current scheme variant",
         "enabled": true,
@@ -306,10 +283,7 @@
         "name": "Variant"
       },
       {
-        "command": [
-          "autocomplete",
-          "transparency"
-        ],
+        "command": ["autocomplete", "transparency"],
         "dangerous": false,
         "description": "Change shell transparency",
         "enabled": false,
@@ -317,11 +291,7 @@
         "name": "Transparency"
       },
       {
-        "command": [
-          "caelestia",
-          "wallpaper",
-          "-r"
-        ],
+        "command": ["caelestia", "wallpaper", "-r"],
         "dangerous": false,
         "description": "Switch to a random wallpaper",
         "enabled": true,
@@ -329,10 +299,7 @@
         "name": "Random"
       },
       {
-        "command": [
-          "setMode",
-          "light"
-        ],
+        "command": ["setMode", "light"],
         "dangerous": false,
         "description": "Change the scheme to light mode",
         "enabled": true,
@@ -340,10 +307,7 @@
         "name": "Light"
       },
       {
-        "command": [
-          "setMode",
-          "dark"
-        ],
+        "command": ["setMode", "dark"],
         "dangerous": false,
         "description": "Change the scheme to dark mode",
         "enabled": true,
@@ -351,10 +315,7 @@
         "name": "Dark"
       },
       {
-        "command": [
-          "systemctl",
-          "poweroff"
-        ],
+        "command": ["systemctl", "poweroff"],
         "dangerous": true,
         "description": "Shutdown the system",
         "enabled": true,
@@ -362,10 +323,7 @@
         "name": "Shutdown"
       },
       {
-        "command": [
-          "systemctl",
-          "reboot"
-        ],
+        "command": ["systemctl", "reboot"],
         "dangerous": true,
         "description": "Reboot the system",
         "enabled": true,
@@ -373,11 +331,7 @@
         "name": "Reboot"
       },
       {
-        "command": [
-          "loginctl",
-          "terminate-user",
-          ""
-        ],
+        "command": ["loginctl", "terminate-user", ""],
         "dangerous": true,
         "description": "Log out of the current session",
         "enabled": true,
@@ -385,10 +339,7 @@
         "name": "Logout"
       },
       {
-        "command": [
-          "loginctl",
-          "lock-session"
-        ],
+        "command": ["loginctl", "lock-session"],
         "dangerous": false,
         "description": "Lock the current session",
         "enabled": true,
@@ -396,10 +347,7 @@
         "name": "Lock"
       },
       {
-        "command": [
-          "systemctl",
-          "suspend-then-hibernate"
-        ],
+        "command": ["systemctl", "suspend-then-hibernate"],
         "dangerous": false,
         "description": "Suspend then hibernate",
         "enabled": true,
@@ -407,12 +355,7 @@
         "name": "Sleep"
       },
       {
-        "command": [
-          "caelestia",
-          "shell",
-          "controlCenter",
-          "open"
-        ],
+        "command": ["caelestia", "shell", "controlCenter", "open"],
         "dangerous": false,
         "description": "Configure the shell",
         "enabled": true,
@@ -449,23 +392,10 @@
     "dragThreshold": 30,
     "vimKeybinds": false,
     "commands": {
-      "logout": [
-        "loginctl",
-        "terminate-user",
-        ""
-      ],
-      "shutdown": [
-        "systemctl",
-        "poweroff"
-      ],
-      "hibernate": [
-        "systemctl",
-        "hibernate"
-      ],
-      "reboot": [
-        "systemctl",
-        "reboot"
-      ]
+      "logout": ["loginctl", "terminate-user", ""],
+      "shutdown": ["systemctl", "poweroff"],
+      "hibernate": ["systemctl", "hibernate"],
+      "reboot": ["systemctl", "reboot"]
     },
     "sizes": {
       "button": 80
@@ -509,9 +439,7 @@
     },
     "vpn": {
       "enabled": false,
-      "provider": [
-        "netbird"
-      ]
+      "provider": ["netbird"]
     }
   },
   "sidebar": {

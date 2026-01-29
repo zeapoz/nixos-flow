@@ -1,7 +1,7 @@
 {inputs, ...}: {
   flake.modules.nixos.desktop = {pkgs, ...}: {
     environment.systemPackages = [
-      inputs.caelestia-shell.packages.${pkgs.stdenv.hostPlatform.system}.default
+      inputs.caelestia-shell.packages.${pkgs.stdenv.hostPlatform.system}.with-cli
     ];
   };
 
