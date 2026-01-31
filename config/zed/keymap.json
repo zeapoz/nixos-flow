@@ -34,6 +34,7 @@
       "space t": "terminal_panel::ToggleFocus",
       "space T": "workspace::NewTerminal",
       "space ;": "command_palette::Toggle",
+      "space j": "journal::NewJournalEntry",
       "space g g": "git_panel::ToggleFocus",
       "space g d": "git::Diff",
       "space n": "workspace::NewFile",

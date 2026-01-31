@@ -19,7 +19,7 @@ function toggle() {
     icon="touchpad-disabled-symbolic"
   fi
 
-  notify-send -u low -i "$icon" -e -a "Touchpad" "Touchpad" "$action the touchpad"
+  notify-send -u low -i "$icon" -e -a "Input" "Touchpad" "$action the touchpad"
   hyprctl keyword device["$DEVICE_NAME"]:enabled "$(cat "$STATUS_FILE")"
 }
 
@@ -33,7 +33,7 @@ function get() {
     icon="touchpad-enabled-symbolic"
   fi
 
-  notify-send -u low -i "$icon" -e -a "Touchpad" "Touchpad" "The touchpad is currently $state"
+  notify-send -u low -i "$icon" -e -a "Input" "Touchpad" "The touchpad is currently $state"
   printf "%s\n" "$state"
 }
 

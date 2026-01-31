@@ -3,9 +3,16 @@
     config,
     pkgs,
     ...
-  }: {
+  }: let
+    toggle-color-scheme = pkgs.writeShellApplication {
+      name = "toggle-color-scheme";
+      runtimeInputs = [pkgs.libnotify pkgs.dconf];
+      text = builtins.readFile ./toggle-color-scheme.sh;
+    };
+  in {
     home.packages = with pkgs; [
       nwg-look # For theme previews.
+      toggle-color-scheme
     ];
 
     gtk = {
@@ -13,11 +20,11 @@
       colorScheme = "dark";
       iconTheme = {
         package = pkgs.papirus-icon-theme;
-        name = "Papirus-Dark";
+        name = "Papirus";
       };
       theme = {
         package = pkgs.orchis-theme;
-        name = "Orchis-Purple-Dark";
+        name = "Orchis-Purple";
       };
     };
 

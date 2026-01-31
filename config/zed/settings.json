@@ -121,7 +121,7 @@
   "buffer_line_height": "standard",
   "buffer_font_weight": 400.0,
   "icon_theme": {
-    "mode": "dark",
+    "mode": "system",
     "light": "Material Icon Theme",
     "dark": "Material Icon Theme",
   },
@@ -133,7 +133,7 @@
   "ui_font_size": 16.5,
   "buffer_font_size": 13.5,
   "theme": {
-    "mode": "dark",
+    "mode": "system",
     "light": "Amp Light",
     "dark": "Amp Dark",
   },
@@ -149,6 +149,7 @@
       },
     },
     "Nix": {
+      "tab_size": 2,
       "format_on_save": "on",
       "language_servers": ["nil"],
       "formatter": {
