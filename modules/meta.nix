@@ -1,4 +1,5 @@
 {
+  withSystem,
   inputs,
   lib,
   ...
@@ -18,24 +19,27 @@
 
   config.meta.lib.mkSystem = {
     name,
+    system,
     stateVersion,
     extraModules,
   }: {
-    ${name} = inputs.nixpkgs.lib.nixosSystem {
-      modules =
-        [
-          inputs.home-manager.nixosModules.home-manager
+    ${name} = withSystem system ({config, ...}:
+      inputs.nixpkgs.lib.nixosSystem {
+        specialArgs.packages = config.packages;
+        modules =
+          [
+            inputs.home-manager.nixosModules.home-manager
 
-          inputs.self.modules.nixos.core
-          inputs.self.modules.nixos.desktop
+            inputs.self.modules.nixos.core
+            inputs.self.modules.nixos.desktop
 
-          {
-            networking.hostName = name;
-            system.stateVersion = stateVersion;
-          }
-        ]
-        ++ extraModules;
-    };
+            {
+              networking.hostName = name;
+              system.stateVersion = stateVersion;
+            }
+          ]
+          ++ extraModules;
+      });
   };
 
   config.flake.modules.homeManager.core = {config, ...}: {

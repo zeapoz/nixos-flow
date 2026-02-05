@@ -1,22 +1,33 @@
 {config, ...}: {
-  flake.modules.nixos.desktop = {pkgs, ...}: let
-    touchpad-utils = pkgs.writeShellApplication {
+  perSystem = {
+    pkgs,
+    self',
+    ...
+  }: {
+    packages.touchpad-utils = pkgs.writeShellApplication {
       name = "touchpad-utils";
-      runtimeInputs = [pkgs.libnotify];
+      runtimeInputs = [self'.packages.caelestia];
       text = builtins.readFile ./touchpad-utils.sh;
     };
-  in {
+  };
+
+  flake.modules.nixos.desktop = {
+    packages,
+    pkgs,
+    ...
+  }: {
     programs.hyprland.enable = true;
 
-    environment.systemPackages = with pkgs; [
-      brightnessctl
-      hyprls
-      nautilus
-      libnotify
-      touchpad-utils
-      playerctl
-      wl-clipboard
-    ];
+    environment.systemPackages = with pkgs;
+      [
+        brightnessctl
+        hyprls
+        nautilus
+        libnotify
+        playerctl
+        wl-clipboard
+      ]
+      ++ [packages.touchpad-utils];
 
     services.greetd = {
       enable = true;

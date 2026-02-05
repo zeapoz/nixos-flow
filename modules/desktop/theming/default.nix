@@ -1,19 +1,27 @@
 {
-  flake.modules.homeManager.desktop = {
-    config,
+  perSystem = {
     pkgs,
+    self',
     ...
-  }: let
-    toggle-color-scheme = pkgs.writeShellApplication {
+  }: {
+    packages.toggle-color-scheme = pkgs.writeShellApplication {
       name = "toggle-color-scheme";
-      runtimeInputs = [pkgs.libnotify pkgs.dconf];
+      runtimeInputs = [pkgs.dconf self'.packages.caelestia];
       text = builtins.readFile ./toggle-color-scheme.sh;
     };
-  in {
-    home.packages = with pkgs; [
-      nwg-look # For theme previews.
-      toggle-color-scheme
-    ];
+  };
+
+  flake.modules.homeManager.desktop = {
+    config,
+    packages,
+    pkgs,
+    ...
+  }: {
+    home.packages = with pkgs;
+      [
+        nwg-look # For theme previews.
+      ]
+      ++ [packages.toggle-color-scheme];
 
     gtk = {
       enable = true;
@@ -24,7 +32,7 @@
       };
       theme = {
         package = pkgs.orchis-theme;
-        name = "Orchis-Purple";
+        name = "Orchis-Purple-Dark";
       };
     };
 

@@ -7,12 +7,14 @@ KEY=/org/gnome/desktop/interface/color-scheme
 current=$(dconf read "$KEY")
 if [ "$current" = "'prefer-light'" ]; then
   mode=dark
-  icon="weather-clear-night-symbolic"
+  icon="dark_mode"
   dconf write "$KEY" "'prefer-dark'"
 else
   mode=light
-  icon="weather-clear-symbolic"
+  icon="light_mode"
   dconf write "$KEY" "'prefer-light'"
 fi
 
-notify-send -u low -i "$icon" -e -a "Theme" "Color Scheme" "Set to $mode mode"
+TITLE="Color Scheme"
+MESSAGE="Set to $mode mode"
+caelestia-shell ipc call toaster info "$TITLE" "$MESSAGE" "$icon"

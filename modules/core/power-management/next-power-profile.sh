@@ -8,18 +8,20 @@ case "$current" in
   "power-saver")
     powerprofilesctl set balanced
     profile="Balanced"
-    icon="power-profile-balanced-symbolic"
+    icon="balance"
     ;;
   "balanced")
     powerprofilesctl set performance
     profile="Performance"
-    icon="power-profile-performance-symbolic"
+    icon="rocket_launch"
     ;;
   "performance")
     powerprofilesctl set power-saver
     profile="Power Saver"
-    icon="power-profile-power-saver-symbolic"
+    icon="energy_savings_leaf"
     ;;
 esac
 
-notify-send -u low -i "$icon" -e -a "Power Profile" "Power Profile" "Switching to ${profile} profile"
+TITLE="Power Profile"
+MESSAGE="Switching to ${profile} profile"
+caelestia-shell ipc call toaster info "$TITLE" "$MESSAGE" "$icon"

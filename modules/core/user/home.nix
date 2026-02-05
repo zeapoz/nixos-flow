@@ -3,11 +3,13 @@
   config,
   ...
 }: {
-  flake.modules.nixos.core = {
+  flake.modules.nixos.core = {packages, ...}: {
     home-manager = {
       useUserPackages = true;
       useGlobalPkgs = true;
       backupFileExtension = "bk";
+
+      extraSpecialArgs.packages = packages;
 
       users.${config.meta.username} = {
         imports = [

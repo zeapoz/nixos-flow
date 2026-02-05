@@ -2,10 +2,13 @@
   inputs,
   config,
   ...
-}: {
-  systems = ["x64_86-linux"];
+}: let
+  system = "x86_64-linux";
+in {
+  systems = [system];
 
   flake.nixosConfigurations = config.meta.lib.mkSystem {
+    inherit system;
     name = "flow";
     stateVersion = "25.11";
     extraModules = [

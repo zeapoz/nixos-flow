@@ -1,15 +1,27 @@
 {inputs, ...}: {
-  flake.modules.nixos.desktop = {pkgs, ...}: let
-    caelestia =
-      inputs.caelestia-shell.packages.${pkgs.stdenv.hostPlatform.system}.with-cli;
+  perSystem = {
+    pkgs,
+    self',
+    ...
+  }: {
+    packages = {
+      caelestia =
+        inputs.caelestia-shell.packages.${pkgs.stdenv.hostPlatform.system}.with-cli;
 
-    toggle-idle-inhibitor = pkgs.writeShellApplication {
-      name = "toggle-idle-inhibitor";
-      runtimeInputs = [pkgs.libnotify caelestia];
-      text = builtins.readFile ./toggle-idle-inhibitor.sh;
+      toggle-idle-inhibitor = pkgs.writeShellApplication {
+        name = "toggle-idle-inhibitor";
+        runtimeInputs = [self'.packages.caelestia];
+        text = builtins.readFile ./toggle-idle-inhibitor.sh;
+      };
     };
-  in {
-    environment.systemPackages = [
+  };
+
+  flake.modules.nixos.desktop = {
+    packages,
+    pkgs,
+    ...
+  }: {
+    environment.systemPackages = with packages; [
       caelestia
       toggle-idle-inhibitor
     ];

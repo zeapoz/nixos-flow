@@ -1,12 +1,18 @@
 {
-  flake.modules.nixos.core = {pkgs, ...}: let
-    next-power-profile = pkgs.writeShellApplication {
+  perSystem = {
+    pkgs,
+    self',
+    ...
+  }: {
+    packages.next-power-profile = pkgs.writeShellApplication {
       name = "next-power-profile";
-      runtimeInputs = [pkgs.libnotify];
+      runtimeInputs = [self'.packages.caelestia];
       text = builtins.readFile ./next-power-profile.sh;
     };
-  in {
-    environment.systemPackages = [
+  };
+
+  flake.modules.nixos.core = {packages, ...}: {
+    environment.systemPackages = with packages; [
       next-power-profile
     ];
 
