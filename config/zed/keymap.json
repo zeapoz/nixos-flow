@@ -30,7 +30,6 @@
       "space S": "project_symbols::Toggle",
       "space x": "diagnostics::Deploy",
       "space X": "diagnostics::DeployCurrentFile",
-      "space a": "agent::ToggleFocus",
       "space t": "terminal_panel::ToggleFocus",
       "space T": "workspace::NewTerminal",
       "space ;": "command_palette::Toggle",
@@ -137,6 +136,21 @@
     "context": "Editor && edit_prediction_conflict",
     "bindings": {
       "tab": "editor::AcceptEditPrediction",
+    },
+  },
+  // ==========================================================================
+  // Agent
+  // ==========================================================================
+  {
+    "context": "(VimControl && !menu) || (!Editor && !Terminal)",
+    "bindings": {
+      "space a": "agent::ToggleFocus",
+    },
+  },
+  {
+    "context": "VimControl && vim_mode == visual",
+    "bindings": {
+      "space a": "agent::AddSelectionToThread",
     },
   },
   // ==========================================================================
