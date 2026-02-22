@@ -10,6 +10,7 @@
       ripgrep
       tldr
       wget
+      yazi
     ];
 
     programs = {
