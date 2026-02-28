@@ -20,5 +20,7 @@
         set fish_greeting
       '';
     };
+
+    home.shell.enableFishIntegration = true;
   };
 }

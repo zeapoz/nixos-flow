@@ -10,7 +10,6 @@
       ripgrep
       tldr
       wget
-      yazi
     ];
 
     programs = {
@@ -24,8 +23,15 @@
     };
   };
 
-  # Use delta in git diff.
   flake.modules.homeManager.core = {config, ...}: {
-    programs.git.settings.core.pager = "delta";
+    programs = {
+      # Use delta in git diff.
+      git.settings.core.pager = "delta";
+
+      yazi = {
+        enable = true;
+        shellWrapperName = "y";
+      };
+    };
   };
 }

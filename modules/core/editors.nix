@@ -6,5 +6,7 @@
       neovim
       tree-sitter
     ];
+
+    environment.sessionVariables.EDITOR = "nvim";
   };
 }
