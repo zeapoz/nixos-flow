@@ -31,7 +31,6 @@
       "space x": "diagnostics::Deploy",
       "space X": "diagnostics::DeployCurrentFile",
       "space t": "terminal_panel::ToggleFocus",
-      "space T": "workspace::NewTerminal",
       "space ;": "command_palette::Toggle",
       "space j": "journal::NewJournalEntry",
       "space g g": "git_panel::ToggleFocus",
@@ -39,7 +38,8 @@
       "space n": "workspace::NewFile",
       "space p": "projects::OpenRecent",
       "space o": "task::Spawn",
-      "space k": "zed::OpenKeymapFile",
+      "space u k": "zed::OpenKeymapFile",
+      "space u s": "zed::OpenSettingsFile",
       // ===========================================================================
       // Toggle Options
       // ===========================================================================
@@ -83,6 +83,8 @@
       // ===========================================================================
       // Panes
       // ===========================================================================
+      "H": "pane::ActivatePreviousItem",
+      "L": "pane::ActivateNextItem",
       "space w h": "workspace::ActivatePaneLeft",
       "space w H": "workspace::MovePaneLeft",
       "space w l": "workspace::ActivatePaneRight",
@@ -96,6 +98,11 @@
       "space w q": "pane::CloseActiveItem",
       "space w o": "pane::CloseOtherItems",
       "space w a": "pane::CloseAllItems",
+      "space w +": "vim::ResizePaneUp",
+      "space w -": "vim::ResizePaneDown",
+      "space w =": "vim::ResetPaneSizes",
+      "space w >": "vim::ResizePaneRight",
+      "space w <": "vim::ResizePaneLeft",
     },
   },
   // ===========================================================================
@@ -121,15 +128,39 @@
   {
     "context": "Terminal",
     "bindings": {
+      "ctrl-k": "terminal_panel::Toggle",
       "ctrl-w h": "workspace::ActivatePaneLeft",
       "ctrl-w l": "workspace::ActivatePaneRight",
       "ctrl-w j": "workspace::ActivatePaneDown",
       "ctrl-w k": "workspace::ActivatePaneUp",
+      "ctrl-w +": "vim::ResizePaneUp",
+      "ctrl-w -": "vim::ResizePaneDown",
+      "ctrl-w =": "vim::ResetPaneSizes",
+      "ctrl-w >": "vim::ResizePaneRight",
+      "ctrl-w <": "vim::ResizePaneLeft",
       "ctrl-w q": "pane::CloseActiveItem",
-      "ctrl-k": "terminal_panel::Toggle",
+      "ctrl-w c": "pane::CloseActiveItem",
+      "ctrl-w a": "pane::CloseAllItems",
+      "ctrl-w n": "workspace::NewTerminal",
+      // Zellij-like bindings
+      "ctrl-t n": "workspace::NewTerminal",
+      "ctrl-t h": "pane::ActivatePreviousItem",
+      "ctrl-t l": "pane::ActivateNextItem",
+      "ctrl-t x": "pane::CloseActiveItem",
+      "ctrl-t r": "terminal::RenameTerminal",
     },
   },
-  // ==========================================================================
+  // ===========================================================================
+  // Search
+  // ===========================================================================
+  {
+    "context": "Pane",
+    "bindings": {
+      "ctrl-r": "search::ToggleReplace",
+      "ctrl-f": "project_search::ToggleFilters",
+    },
+  },
+  // ===========================================================================
   // Completion
   // ===========================================================================
   {
@@ -138,9 +169,9 @@
       "tab": "editor::AcceptEditPrediction",
     },
   },
-  // ==========================================================================
+  // ===========================================================================
   // Agent
-  // ==========================================================================
+  // ===========================================================================
   {
     "context": "(VimControl && !menu) || (!Editor && !Terminal)",
     "bindings": {
@@ -153,13 +184,15 @@
       "space a": "agent::AddSelectionToThread",
     },
   },
-  // ==========================================================================
+  // ===========================================================================
   // Misc
-  // ==========================================================================
+  // ===========================================================================
   {
-    "context": "(VimControl && !menu)",
+    // https://github.com/zed-industries/zed/pull/43618#issuecomment-3662435510
+    "context": "!ProjectSearchBar",
     "bindings": {
-      "space": null, // https://github.com/zed-industries/zed/pull/43618#issuecomment-3662435510
+      "space": null,
+      "ctrl-w": null,
     },
   },
 ]
