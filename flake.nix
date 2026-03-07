@@ -2,7 +2,8 @@
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
 
-    nixos-hardware.url = "github:NixOS/nixos-hardware/master";
+    # https://github.com/NixOS/nixos-hardware/pull/1779
+    nixos-hardware.url = "github:WaffleLapkin/nixos-hardware/disable-user-service";
 
     home-manager = {
       url = "github:nix-community/home-manager";
