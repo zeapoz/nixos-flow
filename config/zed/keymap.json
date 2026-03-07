@@ -7,7 +7,7 @@
 // from the command palette.
 [
   // ===========================================================================
-  // Prompt
+  // Prompt & Picker
   // ===========================================================================
   {
     "bindings": {
@@ -16,7 +16,13 @@
     },
   },
   {
-    "context": "(VimControl && !menu) || (!Editor && !Terminal)",
+    "context": "TabSwitcher",
+    "bindings": {
+      "c": "tab_switcher::CloseSelectedItem",
+    },
+  },
+  {
+    "context": "((Editor && VimControl) || ProjectPanel || EmptyPane) && !Picker",
     "bindings": {
       // ===========================================================================
       // Editor
@@ -33,13 +39,18 @@
       "space t": "terminal_panel::ToggleFocus",
       "space ;": "command_palette::Toggle",
       "space j": "journal::NewJournalEntry",
-      "space g g": "git_panel::ToggleFocus",
-      "space g d": "git::Diff",
       "space n": "workspace::NewFile",
       "space p": "projects::OpenRecent",
       "space o": "task::Spawn",
       "space u k": "zed::OpenKeymapFile",
       "space u s": "zed::OpenSettingsFile",
+      // ===========================================================================
+      // Git
+      // ===========================================================================
+      "space g g": "git_panel::ToggleFocus",
+      "space g d": "git::Diff",
+      "] h": "editor::GoToHunk",
+      "[ h": "editor::GoToPreviousHunk",
       // ===========================================================================
       // Toggle Options
       // ===========================================================================
@@ -58,8 +69,6 @@
       // ===========================================================================
       "space space": "editor::SelectEnclosingSymbol",
       "space r": "editor::Rename",
-      "] h": "editor::GoToHunk",
-      "[ h": "editor::GoToPreviousHunk",
       "] d": "editor::GoToDiagnostic",
       "[ d": "editor::GoToPreviousDiagnostic",
       "] e": [
@@ -85,6 +94,7 @@
       // ===========================================================================
       "H": "pane::ActivatePreviousItem",
       "L": "pane::ActivateNextItem",
+      "space w p": "workspace::ActivatePreviousPane",
       "space w h": "workspace::ActivatePaneLeft",
       "space w H": "workspace::MovePaneLeft",
       "space w l": "workspace::ActivatePaneRight",
@@ -95,9 +105,10 @@
       "space w K": "workspace::MovePaneUp",
       "space w v": "pane::SplitVertical",
       "space w s": "pane::SplitHorizontal",
-      "space w q": "pane::CloseActiveItem",
+      "space w q": "pane::CloseAllItems",
+      "space w c": "pane::CloseActiveItem",
       "space w o": "pane::CloseOtherItems",
-      "space w a": "pane::CloseAllItems",
+      "space w a": "workspace::CloseAllItemsAndPanes",
       "space w +": "vim::ResizePaneUp",
       "space w -": "vim::ResizePaneDown",
       "space w =": "vim::ResetPaneSizes",
@@ -129,6 +140,7 @@
     "context": "Terminal",
     "bindings": {
       "ctrl-k": "terminal_panel::Toggle",
+      "ctrl-j": "workspace::ToggleLeftDock",
       "ctrl-w h": "workspace::ActivatePaneLeft",
       "ctrl-w l": "workspace::ActivatePaneRight",
       "ctrl-w j": "workspace::ActivatePaneDown",
@@ -138,7 +150,7 @@
       "ctrl-w =": "vim::ResetPaneSizes",
       "ctrl-w >": "vim::ResizePaneRight",
       "ctrl-w <": "vim::ResizePaneLeft",
-      "ctrl-w q": "pane::CloseActiveItem",
+      "ctrl-w q": "pane::CloseAllItems",
       "ctrl-w c": "pane::CloseActiveItem",
       "ctrl-w a": "pane::CloseAllItems",
       "ctrl-w n": "workspace::NewTerminal",
@@ -193,6 +205,9 @@
     "bindings": {
       "space": null,
       "ctrl-w": null,
+      "ctrl-t": null,
+      "ctrl-p": null,
+      "ctrl-n": null,
     },
   },
 ]
