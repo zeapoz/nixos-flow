@@ -1,7 +1,7 @@
 {
   flake.modules.nixos.core = {pkgs, ...}: {
     environment.systemPackages = with pkgs; [
-      nil
+      nixd
       alejandra
       statix
     ];
