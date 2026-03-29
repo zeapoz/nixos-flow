@@ -34,6 +34,7 @@
         package = pkgs.orchis-theme;
         name = "Orchis-Purple-Dark";
       };
+      gtk4.theme = config.gtk.theme;
     };
 
     home.pointerCursor = {
