@@ -1,5 +1,5 @@
 {
-  flake.modules.nixos.core = {pkgs, ...}: {
+  flake.modules.nixos.dev = {pkgs, ...}: {
     environment.systemPackages = with pkgs; [
       lua-language-server
       stylua

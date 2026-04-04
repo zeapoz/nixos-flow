@@ -1,12 +1,12 @@
 {
-  flake.modules.nixos.core = {pkgs, ...}: {
+  flake.modules.nixos.dev = {pkgs, ...}: {
     environment.systemPackages = with pkgs; [
       git
       gh
     ];
   };
 
-  flake.modules.homeManager.core = {config, ...}: {
+  flake.modules.homeManager.dev = {config, ...}: {
     programs.git = {
       enable = true;
       settings = {

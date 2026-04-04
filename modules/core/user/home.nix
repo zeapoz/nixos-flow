@@ -15,6 +15,7 @@
         imports = [
           inputs.self.modules.homeManager.core
           inputs.self.modules.homeManager.desktop
+          inputs.self.modules.homeManager.dev
 
           ({osConfig, ...}: {
             # The state version is required and should stay at the version you

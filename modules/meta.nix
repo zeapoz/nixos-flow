@@ -33,6 +33,7 @@
             inputs.self.modules.nixos.core
             inputs.self.modules.nixos.desktop
             inputs.self.modules.nixos.ai
+            inputs.self.modules.nixos.dev
 
             {
               networking.hostName = name;
