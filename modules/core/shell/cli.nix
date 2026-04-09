@@ -23,7 +23,7 @@
     };
   };
 
-  flake.modules.homeManager.core = {config, ...}: {
+  flake.modules.homeManager.core = {
     programs = {
       # Use delta in git diff.
       git.settings.core.pager = "delta";
