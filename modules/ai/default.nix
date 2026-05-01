@@ -32,7 +32,5 @@ _: {
         OLLAMA_CONTEXT_LENGTH = toString (128 * 1024);
       };
     };
-
-    services.open-webui.enable = true;
   };
 }
