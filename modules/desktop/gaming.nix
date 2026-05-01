@@ -4,6 +4,8 @@
       with cores; [
         mesen
         gambatte
+        melonds
+        desmume
       ]);
   in {
     environment.systemPackages = with pkgs; [
