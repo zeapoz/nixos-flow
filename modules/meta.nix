@@ -29,6 +29,7 @@
         modules =
           [
             inputs.home-manager.nixosModules.home-manager
+            inputs.handy.nixosModules.default
 
             inputs.self.modules.nixos.core
             inputs.self.modules.nixos.desktop

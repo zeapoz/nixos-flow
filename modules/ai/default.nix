@@ -1,27 +1,11 @@
-_: {
-  perSystem = {pkgs, ...}: {
-    packages.voice-dictation = pkgs.writeShellApplication {
-      name = "voice-dictation";
-      runtimeInputs = with pkgs; [
-        whisper-cpp-vulkan
-        wl-clipboard
-        libnotify
-      ];
-      text = builtins.readFile ./voice-dictation.sh;
-    };
-  };
+{
+  flake.modules.nixos.ai = {pkgs, ...}: {
+    environment.systemPackages = with pkgs; [
+      opencode
+      wtype # Handy dependency
+    ];
 
-  flake.modules.nixos.ai = {
-    packages,
-    pkgs,
-    ...
-  }: {
-    environment.systemPackages = with pkgs;
-      [
-        whisper-cpp-vulkan
-        opencode
-      ]
-      ++ [packages.voice-dictation];
+    programs.handy.enable = true;
 
     services.ollama = {
       enable = true;
