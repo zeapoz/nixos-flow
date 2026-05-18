@@ -7,6 +7,12 @@
 // custom settings, run `zed: open default settings` from the
 // command palette (cmd-shift-p / ctrl-shift-p)
 {
+  "outline_panel": {
+    "dock": "left"
+  },
+  "collaboration_panel": {
+    "dock": "left"
+  },
   "base_keymap": "VSCode",
   "edit_predictions": {
     "provider": "supermaven",
@@ -37,6 +43,7 @@
     },
   },
   "git_panel": {
+    "dock": "left",
     "tree_view": true,
   },
   "show_wrap_guides": false,
@@ -110,6 +117,7 @@
     "button": true,
   },
   "agent": {
+    "dock": "right",
     "tool_permissions": {
       "default": "allow",
     },

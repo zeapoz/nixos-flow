@@ -3,9 +3,12 @@
     retroarch = pkgs.retroarch.withCores (cores:
       with cores; [
         mesen
+        mgba
         gambatte
         melonds
         desmume
+        ppsspp
+        beetle-wswan
       ]);
   in {
     environment.systemPackages = with pkgs; [
