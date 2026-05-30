@@ -46,6 +46,8 @@
     },
     "bar": {
         "clock": {
+            "background": false,
+            "showDate": true,
             "showIcon": true
         },
         "dragThreshold": 20,
@@ -87,7 +89,10 @@
                 "id": "power"
             }
         ],
-        "persistent": true,
+        "excludedScreens": [
+            "DP-2"
+        ],
+        "persistent": false,
         "popouts": {
             "activeWindow": true,
             "statusIcons": true,
@@ -379,7 +384,7 @@
         ],
         "maxShown": 10,
         "maxWallpapers": 9,
-        "showOnHover": true,
+        "showOnHover": false,
         "specialPrefix": "@",
         "useFuzzy": {
             "actions": false,
