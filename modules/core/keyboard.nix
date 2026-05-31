@@ -4,7 +4,11 @@
       enable = true;
       keyboards = {
         default = {
-          ids = ["*"];
+          ids = [
+            "AT Translated Set 2 keyboard"
+            "ASUSTeK Computer Inc. GZ302EA-Keyboard"
+            "ASUSTeK Computer Inc. N-KEY Device"
+          ];
           settings = {
             main = {
               capslock = "esc";

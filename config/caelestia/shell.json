@@ -45,6 +45,10 @@
         }
     },
     "bar": {
+        "activeWindow": {
+            "compact": true,
+            "inverted": false
+        },
         "clock": {
             "background": false,
             "showDate": true,
@@ -92,7 +96,7 @@
         "excludedScreens": [
             "DP-2"
         ],
-        "persistent": false,
+        "persistent": true,
         "popouts": {
             "activeWindow": true,
             "statusIcons": true,
@@ -103,7 +107,7 @@
             "volume": true,
             "workspaces": true
         },
-        "showOnHover": true,
+        "showOnHover": false,
         "status": {
             "showAudio": true,
             "showBattery": true,
@@ -130,7 +134,7 @@
             "occupiedBg": false,
             "occupiedLabel": " ",
             "perMonitorWorkspaces": true,
-            "showWindows": false,
+            "showWindows": true,
             "showWindowsOnSpecialWorkspaces": false,
             "shown": 6,
             "specialWorkspaceIcons": [
