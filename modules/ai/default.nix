@@ -5,6 +5,9 @@
       wtype # Handy dependency
     ];
 
+    # Open opencode server port.
+    networking.firewall.allowedTCPPorts = [4096];
+
     programs.handy.enable = true;
 
     services.ollama = {
