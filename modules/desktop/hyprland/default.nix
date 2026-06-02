@@ -14,9 +14,13 @@
   flake.modules.nixos.desktop = {
     packages,
     pkgs,
+    lib,
     ...
   }: {
     programs.hyprland.enable = true;
+
+    # Prevent Hyprland from leaking CAP_SYS_NICE into ambient set (breaks bwrap)
+    security.wrappers.Hyprland.capabilities = lib.mkForce "";
 
     environment.systemPackages = with pkgs;
       [
