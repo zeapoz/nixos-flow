@@ -434,7 +434,7 @@
                 "to": "YT Music"
             }
         ],
-        "smartScheme": true,
+        "smartScheme": false,
         "useFahrenheit": false,
         "useTwelveHourClock": false,
         "visualiserBars": 45,
