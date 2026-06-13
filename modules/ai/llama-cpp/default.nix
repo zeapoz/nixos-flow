@@ -3,6 +3,8 @@
     host = "0.0.0.0";
     port = 11434;
     contextSize = 131072;
+    threads = 16;
+    threadsBatch = 32;
 
     llama-wrapped = pkgs.runCommand "llama-cpp-rocm-wrapped" {
       nativeBuildInputs = [pkgs.makeWrapper];
@@ -10,7 +12,9 @@
       mkdir -p $out/bin
       for bin in ${pkgs.llama-cpp-rocm}/bin/*; do
         name=$(basename "$bin")
-        makeWrapper "$bin" "$out/bin/$name" --set GGML_CUDA_ENABLE_UNIFIED_MEMORY 1
+        makeWrapper "$bin" "$out/bin/$name" \
+          --set GGML_CUDA_ENABLE_UNIFIED_MEMORY 1 \
+          --set ROCBLAS_USE_HIPBLASLT 1
       done
     '';
 
@@ -63,7 +67,7 @@
 
       serviceConfig = {
         Type = "simple";
-        ExecStart = "${llama-wrapped}/bin/llama-server --host ${host} --port ${toString port} --models-dir /var/lib/llama-cpp --ctx-size ${toString contextSize} --gpu-layers all --flash-attn auto";
+        ExecStart = "${llama-wrapped}/bin/llama-server --host ${host} --port ${toString port} --models-dir /var/lib/llama-cpp --ctx-size ${toString contextSize} --gpu-layers all --flash-attn auto --cache-type-k q8_0 --cache-type-v q8_0 --no-mmap --mlock -b 4096 -ub 512 -t ${toString threads} -tb ${toString threadsBatch}";
         Restart = "on-failure";
         RestartSec = "5";
         StateDirectory = "llama-cpp";
