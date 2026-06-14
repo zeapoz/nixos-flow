@@ -2,21 +2,22 @@
   flake.modules.nixos.ai = {pkgs, ...}: let
     host = "0.0.0.0";
     port = 11434;
-    contextSize = 131072;
+    contextSize = 1024 * 256;
     threads = 16;
     threadsBatch = 32;
 
-    llama-wrapped = pkgs.runCommand "llama-cpp-rocm-wrapped" {
-      nativeBuildInputs = [pkgs.makeWrapper];
-    } ''
-      mkdir -p $out/bin
-      for bin in ${pkgs.llama-cpp-rocm}/bin/*; do
-        name=$(basename "$bin")
-        makeWrapper "$bin" "$out/bin/$name" \
-          --set GGML_CUDA_ENABLE_UNIFIED_MEMORY 1 \
-          --set ROCBLAS_USE_HIPBLASLT 1
-      done
-    '';
+    llama-wrapped =
+      pkgs.runCommand "llama-cpp-rocm-wrapped" {
+        nativeBuildInputs = [pkgs.makeWrapper];
+      } ''
+        mkdir -p $out/bin
+        for bin in ${pkgs.llama-cpp-rocm}/bin/*; do
+          name=$(basename "$bin")
+          makeWrapper "$bin" "$out/bin/$name" \
+            --set GGML_CUDA_ENABLE_UNIFIED_MEMORY 1 \
+            --set ROCBLAS_USE_HIPBLASLT 1
+        done
+      '';
 
     llama-get-model = pkgs.writeShellScriptBin "llama-get-model" ''
       set -euo pipefail
